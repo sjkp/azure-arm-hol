@@ -22,7 +22,7 @@ Get-AzureVMImagePublisher -Location $location | Select PublisherName |% {
 ```
 
 ##Problems with the installation
-If you encounter problems during the installation of the VM Extension, you can either visit the audit log in the new [azure portal](https://portal.azure.com) or you can RDP into the machine and look in C:\Packages\Plugins\<name-of-extension>\<version> is this folder you will find all files and logs related to the VM extension. 
+If you encounter problems during the installation of the VM Extension, you can either visit the audit log in the new [azure portal](https://portal.azure.com) or you can RDP into the machine and look in C:\Packages\Plugins\<name-of-extension>\\<version> is this folder you will find all files and logs related to the VM extension. 
 
 
 ## Deployment

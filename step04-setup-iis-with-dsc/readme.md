@@ -33,7 +33,7 @@ Configuration azuredkwebsite
 ```
 Note the DSC file have to be placed in a zip file that must be uploaded somewhere so the DSC extension can download and install it on the machine. For this step you can use the provided zip file or you can try to upload one of your own.
 
-We will use the same template as in the last step with just an extra resource added that namely the DSC VM extension. 
+We will use the same template as in the last step with an extra resource added, namely the DSC VM extension. 
 
 You can find the information for the DSC VM extension in https://gist.github.com/sjkp/0432b055400b3c3c4504. 
 
@@ -51,8 +51,8 @@ Note that the DSC extension does require a settings object, the settings object 
 ## Deployment
 [Deployment Guide](../docs/deployment.md)
 
-###Remove the VM Extension
-If the installation of the VM extension fails and you want to try over you can completely remove it from the VM using the following command
+###Remove the VM DSC Extension
+If the installation of the VM DSC extension fails and you want to try over you can completely remove it from the VM using the following command
 ```
 Remove-AzureVMDscExtension -ResourceGroupName mytestgroup -VMName azuredkvm -Name <name-of-dsc-extension>
 ```
