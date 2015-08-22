@@ -33,10 +33,10 @@
       "value": "DSCSetupIIS"
     },
     "vmDSCExtensionModulesUrl": {
-      "value": ""
+      "value": "https://github.com/sjkp/azure-arm-hol/raw/master/step04-setup-iis-with-dsc/complete/azuredkwebsite.ps1.zip"
     },
     "vmDSCExtensionConfigurationFunction": {
-      "value": ""
+      "value": "azuredkwebsite.ps1\\azuredkwebsite"
     }
   }
 }

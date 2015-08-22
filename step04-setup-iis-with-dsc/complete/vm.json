@@ -246,10 +246,10 @@
                 //Install DSC Extension, look here for the needed values https://gist.github.com/sjkp/0432b055400b3c3c4504#file-azure-vm-extensions-L885-L891
                 "publisher": "Microsoft.Powershell",
                 "type": "DSC",
-                "typeHandlerVersion": "2.3",
+                "typeHandlerVersion": "2.2",
                 //Replace with the settings object and the correct value from the description
                 "settings": {
-                    "ModulesUrl": "[parameters('vmDSCExtensionModulesUrl)]", //The url to the zip file containing the DSC module
+                    "ModulesUrl": "[parameters('vmDSCExtensionModulesUrl')]", //The url to the zip file containing the DSC module
                     "SasToken": "", //SAS token if the DSC is stored in a protected blob storage
                     "ConfigurationFunction": "[parameters('vmDSCExtensionConfigurationFunction')]", //The function to call, in the format azuredkwebsite.ps1\\azuredkwebsite
                     "Properties": {
