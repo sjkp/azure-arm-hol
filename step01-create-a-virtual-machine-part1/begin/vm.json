@@ -102,7 +102,7 @@
             "name": "", //Create a variable to hold the name
             "dependsOn": [
                 "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
-                //Add a dependency to the virtual network name
+                ""//Add a dependency to the virtual network name
             ],
             "properties": {
                 "ipConfigurations": [
