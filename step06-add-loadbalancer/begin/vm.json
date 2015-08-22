@@ -1,0 +1,125 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "newStorageAccountName": {
+            "type": "string",
+            "metadata": {
+                "description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed."
+            }
+        },
+        "storageAccountType": {
+            "type": "string",
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_ZRS"
+            ],
+            "defaultValue": "Standard_LRS",
+            "metadata": {
+                "description": "The type of storage account to provision"
+            }
+        },
+        "dnsNameForPublicIP": {
+            "type": "string",
+            "metadata": {
+                "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+            }
+        }
+    },
+    "variables": {
+        "location": "West Europe",
+        "publicIPAllocationMethod": "Dynamic",
+        "virtualNetworkAddressPrefix": "10.0.0.0/16",
+        "virtualNetworkSubnetAddressPrefix": "10.0.0.0/24",
+        "publicIPAddressName": "azuredklbPublicIP",
+        "subnetName": "azuredklbSubnet",
+        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
+        "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
+        "virtualNetworkName": "vnetlb",
+        "nicName": "azuredklbnic"
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-05-01-preview",
+            "type": "Microsoft.Storage/storageAccounts",
+            "location": "[variables('location')]",
+            "name": "[parameters('newStorageAccountName')]",
+            "properties": {
+                "accountType": "[parameters('storageAccountType')]"
+            }
+        },
+        //Add an availability set resource, look at https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json#L7-L33
+        {
+              
+        },
+        {
+            "apiVersion": "2015-06-15",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "location": "[variables('location')]",
+            "name": "[variables('publicIPAddressName')]",
+            "properties": {
+                "publicIPAllocationMethod": "[variables('publicIPAllocationMethod')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[parameters('dnsNameForPublicIP')]"
+                }
+            }
+        },
+        {
+            "apiVersion": "2015-06-15",
+            "type": "Microsoft.Network/virtualNetworks",
+            "location": "[variables('location')]",
+            "name": "[variables('virtualNetworkName')]", 
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[variables('virtualNetworkAddressPrefix')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[variables('subnetName')]",
+                        "properties": {
+                            "addressPrefix": "[variables('virtualNetworkSubnetAddressPrefix')]"
+                        }
+                    }
+                ]
+            }
+        },
+        //Add an loadbalancer resource, look at https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Network.json#L500-L556
+        {
+            
+        },
+        {
+            "apiVersion": "2015-06-15",
+            "type": "Microsoft.Network/networkInterfaces",
+            "location": "[variables('location')]",
+            "name": "[variables('nicName')]", 
+            "dependsOn": [                
+                "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]",
+                "" // Add a dependency to the loadbalancer 
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
+                            },
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            },
+                            //Todo setup the loadBalancerBackendAddressPools, look at https://msdn.microsoft.com/en-us/library/azure/mt163668.aspx (I couldn't find a schema for this in github), 
+                            //remember that you can get the id of a resource with "[resourceId(<resource-type>,<resource-name>)]" 
+                            "loadBalancerBackendAddressPools": [
+                                {"id": ""}
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
