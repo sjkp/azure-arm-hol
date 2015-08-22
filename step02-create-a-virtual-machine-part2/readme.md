@@ -34,12 +34,5 @@ $location = "West Europe"
 Get-AzureVMSize -Location $location
 ``` 
 
-## Provision the resource group
-### PowerShell
-In order to provision the resource group you need to open a Azure PowerShell and run the following commands, when located in the directory that contains your template and vm.param.json file.
-```
-Add-AzureAccount
-Switch-AzureMode AzureResourceManager
-New-AzureResourceGroup -Name "mytestgroup" -Location westeurope -TemplateParameterFile .\vm.param.json -TemplateFile .\vm.json
-```
-
+## Deployment
+[Deployment Guide](../docs/deployment.md)   

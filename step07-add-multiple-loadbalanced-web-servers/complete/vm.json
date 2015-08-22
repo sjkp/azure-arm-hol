@@ -83,7 +83,13 @@
         "availabilitySetName": "azuredklbAVset",
         "loadbalancerName": "azuredkLoadbalancer",
         "loadbalancerPrivateIP": "10.0.0.5",
-        "numberOfMachines": 2
+        "numberOfMachines": 2,
+        "vmSize": "Standard_A1", //Load balacing are only supported for Standard VMs
+        "vmPublisher": "MicrosoftWindowsServer",
+        "vmOffer": "WindowsServer",
+        "vmSku": "2012-R2-Datacenter",
+        "blobContainerName": "images",
+        "osDiskName": "osDisk"
     },
     "resources": [
         {
@@ -269,7 +275,7 @@
             ],
             "properties": {
                 "availabilitySet": {
-                    "id": "" //add the resourceId of the availabilitySet
+                    "id": "[resourceId('Microsoft.Compute/availabilitySets',variables('availabilitySetName'))]" //add the resourceId of the availabilitySet
                 },
                 "hardwareProfile": {
                     "vmSize": "[variables('vmSize')]"

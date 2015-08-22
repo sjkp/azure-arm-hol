@@ -82,7 +82,13 @@
         "nicName": "azuredklbnic",
         "availabilitySetName": "azuredklbAVset",
         "loadbalancerName": "azuredkLoadbalancer",
-        "loadbalancerPrivateIP": "10.0.0.5"
+        "loadbalancerPrivateIP": "10.0.0.5",
+        "vmSize": "Standard_A1", //Load balacing are only supported for Standard VMs
+        "vmPublisher": "MicrosoftWindowsServer",
+        "vmOffer": "WindowsServer",
+        "vmSku": "2012-R2-Datacenter",
+        "blobContainerName": "images",
+        "osDiskName": "osDisk"
     },
     "resources": [
         {

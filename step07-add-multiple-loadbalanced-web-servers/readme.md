@@ -21,7 +21,10 @@ To copy a resource a resource it could look like this:
 ``` 
 The copy object defines the name of the loop and the amount of time the resource should be copied. The copyIndex() function is used to get the current iteration of the loop.
 
-The task in this step is to use the copy functionality to copy the nics and the virtual machine resources. You can reuse the virtual machine part of template from step 5. 
+The task in this step is to use the copy functionality to copy the nics and the virtual machine resources. You can reuse the virtual machine part of template from step 5.
+
+#Virtual Machine Sizes
+Remember that load balacing are only supported by Standard VMs not Basic. 
 
 ## Deployment
 [Deployment Guide](../docs/deployment.md)

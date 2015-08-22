@@ -24,16 +24,9 @@ Get-AzureVMImagePublisher -Location $location | Select PublisherName |% {
 ##Problems with the installation
 If you encounter problems during the installation of the VM Extension, you can either visit the audit log in the new [azure portal](https://portal.azure.com) or you can RDP into the machine and look in C:\Packages\Plugins\<name-of-extension>\<version> is this folder you will find all files and logs related to the VM extension. 
 
-## Provision the resource group
-### PowerShell
-In order to provision the resource group you need to open a Azure PowerShell and run the following commands, when located in the directory that contains your template and vm.param.json file.
 
-Note if you haven't deleted the resource group from last step you can apply the template to the existing resource group and only get the Extension added to the virtual machine.
-```
-Add-AzureAccount
-Switch-AzureMode AzureResourceManager
-New-AzureResourceGroup -Name "mytestgroup" -Location westeurope -TemplateParameterFile .\vm.param.json -TemplateFile .\vm.json
-```
+## Deployment
+[Deployment Guide](../docs/deployment.md)   
 
 To check if the VM Extension is properly installed you can use the following command
 ```

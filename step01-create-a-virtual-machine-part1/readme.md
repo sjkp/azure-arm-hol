@@ -52,18 +52,5 @@ The schemas makes heavy use of references, so when you encounter, e.g.
 ``` 
 Just find where the subnetProperties is defined to figure out what properties are available.  
 
-
-
-## Provision the resource group
-### PowerShell
-In order to provision the resource group you need to open a Azure PowerShell and run the following commands, when located in the directory that contains your template and vm.param.json file.
-```
-Add-AzureAccount
-Switch-AzureMode AzureResourceManager
-New-AzureResourceGroup -Name "mytestgroup" -Location westeurope -TemplateParameterFile .\vm.param.json -TemplateFile .\vm.json
-```
-
-If the deploy fails or you want to clean up, you can remove the resource group including everything within it, with the following command
-```
-Remove-AzureResourceGroup -Name "mytestgroup"
-```
+## Deployment
+[Deployment Guide](../docs/deployment.md)   

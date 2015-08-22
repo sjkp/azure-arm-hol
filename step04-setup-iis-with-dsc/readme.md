@@ -50,3 +50,9 @@ Note that the DSC extension does require a settings object, the settings object 
 ``` 
 ## Deployment
 [Deployment Guide](../docs/deployment.md)
+
+###Remove the VM Extension
+If the installation of the VM extension fails and you want to try over you can completely remove it from the VM using the following command
+```
+Remove-AzureVMDscExtension -ResourceGroupName mytestgroup -VMName azuredkvm -Name <name-of-dsc-extension>
+```
