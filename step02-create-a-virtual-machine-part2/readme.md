@@ -5,7 +5,9 @@ The begin code starts from the complete code from step 1, but feel free to conti
 
 To add a virtual machine to the template we need to be familiar with the [Microsoft.Compute/virtualMachines](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json) schema.
 
-Note that you don't have to delete the resource group you created in step 1, you can just apply the same template again, the Azure Resource Manager will ensure that only added resources gets provisioned. 
+Note that you don't have to delete the resource group you created in step 1, you can just apply the same template again, the Azure Resource Manager will ensure that only added resources gets provisioned.
+
+Remember that the virtual machine will depend on the nic and the storage account created in the previous step, so you have to use the dependOn again. 
 
 ##VM Images (osProfile)
 In this step we create the virtual machine from a prepublished image, it is also possible to use a custom image (but that is for another day). 

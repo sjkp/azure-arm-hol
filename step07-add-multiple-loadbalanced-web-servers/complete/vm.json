@@ -314,7 +314,7 @@
             "apiVersion": "2015-06-15",
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "location": "[variables('location')]",
-            "name": "[concat(parameters('vmName'),'/',parameters('vmDSCExtensionName'),copyIndex())]",
+            "name": "[concat(parameters('vmName'),copyIndex(),'/',parameters('vmDSCExtensionName'),copyIndex())]",
             //Copy the VM Extension twice so there is one for each VM 
             "copy": {
                 "name": "dscExtensionLoop",
