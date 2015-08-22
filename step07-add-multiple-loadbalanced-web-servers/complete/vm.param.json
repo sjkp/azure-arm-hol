@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "newStorageAccountName": {
-      "value": "azuredkholvm"
+      "value": "azuredklbholvm"
     },
     "adminUsername": {
       "value": "azuredk"
@@ -12,22 +12,10 @@
       "value": "HighlyS3cure"
     },
     "dnsNameForPublicIP": {
-      "value": "azuredkholvm"
+      "value": "azuredklbholvm"
     },
     "vmName": {
-      "value": "azuredkvm"
-    },
-    "vmExtensionName": {
-      "value": "SymantecProtection"
-    },
-    "vmExtensionPublisher": {
-      "value": "Symantec"
-    },
-    "vmExtensionType": {
-      "value": "SymantecEndpointProtection"
-    },
-    "vmExtensionTypeVersion": {
-      "value": "12.1"
+      "value": "azuredklbvm"
     },
      "vmDSCExtensionName": {
       "value": "DSCSetupIIS"

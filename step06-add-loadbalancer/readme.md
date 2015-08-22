@@ -16,3 +16,6 @@ Only the availability set and load balancer are new resources we need to get fam
 
 ## Load balancer
 The load balancer resource should be dependent on the virtual network. 
+
+## Deployment
+[Deployment Guide](../docs/deployment.md)

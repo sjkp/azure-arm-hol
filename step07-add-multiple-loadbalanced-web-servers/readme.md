@@ -23,3 +23,5 @@ The copy object defines the name of the loop and the amount of time the resource
 
 The task in this step is to use the copy functionality to copy the nics and the virtual machine resources. You can reuse the virtual machine part of template from step 5. 
 
+## Deployment
+[Deployment Guide](../docs/deployment.md)

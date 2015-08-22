@@ -48,22 +48,5 @@ Note that the DSC extension does require a settings object, the settings object 
   }
 }
 ``` 
-## Provision the resource group
-### PowerShell
-In order to provision the resource group you need to open a Azure PowerShell and run the following commands, when located in the directory that contains your template and vm.param.json file.
-
-Note if you haven't deleted the resource group from last step you can apply the template to the existing resource group and only get the DSC Extension added to the virtual machine.
-```
-Add-AzureAccount
-Switch-AzureMode AzureResourceManager
-New-AzureResourceGroup -Name "mytestgroup" -Location westeurope -TemplateParameterFile .\vm.param.json -TemplateFile .\vm.json
-```
-
-When the extension gets added successfully you can to browse the default IIS website on http://<dnsNameForPublicIP>.<location>.cloudapp.azure.com/
-
-
-##Remove the extension
-If the installation of the extension fails and you want to try over you can completely remove it from the VM using the following command
-```
-Remove-AzureVMDscExtension -ResourceGroupName mytestgroup -VMName azuredkvm -Name <name-of-dsc-extension>
-```
+## Deployment
+[Deployment Guide](../docs/deployment.md)
