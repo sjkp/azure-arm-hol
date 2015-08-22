@@ -1,0 +1,254 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "newStorageAccountName": {
+            "type": "string",
+            "metadata": {
+                "description": "Unique DNS Name for the Storage Account where the Virtual Machine's disks will be placed."
+            }
+        },
+        "storageAccountType": {
+            "type": "string",
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_ZRS"
+            ],
+            "defaultValue": "Standard_LRS",
+            "metadata": {
+                "description": "The type of storage account to provision"
+            }
+        },
+        "adminUsername": {
+            "type": "string",
+            "metadata": {
+                "description": "Username for the Virtual Machine."
+            }
+        },
+        "adminPassword": {
+            "type": "securestring",
+            "metadata": {
+                "description": "Password for the Virtual Machine."
+            }
+        },
+        "dnsNameForPublicIP": {
+            "type": "string",
+            "metadata": {
+                "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+            }
+        },
+        "vmName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the virtual machine"
+            }
+        },
+        "vmExtensionName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the VM extension (no spaces or special characters)"
+            }
+        },
+        "vmExtensionPublisher": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the VM extension publisher"
+            }
+        },
+        "vmExtensionType": {
+            "type": "string",
+            "metadata": {
+                "description": "The type of the VM extension"
+            }
+        },
+        "vmExtensionTypeVersion": {
+            "type": "string",
+            "metadata": {
+                "description": "The version of the VM extension (should only be the major minor version number, e.g. 1.5, not 1.5.2.4.5)"
+            }
+        },
+        "vmDSCExtensionName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the VM extension"
+            }
+        },
+        "vmDSCExtensionModulesUrl": {
+            "type": "string",
+            "metadata": {
+                "description": "The url to the zip containing the DSC module"
+            }
+        },
+        "vmDSCExtensionConfigurationFunction": {
+            "type": "string",   
+            "metadata": {
+                "description": "The function to call"
+            }
+        }
+    },
+    "variables": {
+        "location": "West Europe",
+        "publicIPAllocationMethod": "Dynamic",
+        "virtualNetworkAddressPrefix": "10.0.0.0/16",
+        "virtualNetworkSubnetAddressPrefix": "10.0.0.0/24",
+        "publicIPAddressName": "azuredkPublicIP",
+        "subnetName": "azuredkSubnet",
+        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('virtualNetworkName'))]",
+        "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
+        "virtualNetworkName": "vnet",
+        "nicName": "azuredknic",
+        "vmSize": "Basic_A1",
+        "vmPublisher": "MicrosoftWindowsServer",
+        "vmOffer": "WindowsServer",
+        "vmSku": "2012-R2-Datacenter",
+        "blobContainerName": "images",
+        "osDiskName": "osDisk"
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-05-01-preview",
+            "type": "Microsoft.Storage/storageAccounts",
+            "location": "[variables('location')]",
+            "name": "[parameters('newStorageAccountName')]",
+            "properties": {
+                "accountType": "[parameters('storageAccountType')]"
+            }
+        },
+        {
+            "apiVersion": "2015-06-15",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "location": "[variables('location')]",
+            "name": "[variables('publicIPAddressName')]",
+            "properties": {
+                "publicIPAllocationMethod": "[variables('publicIPAllocationMethod')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[parameters('dnsNameForPublicIP')]"
+                }
+            }
+        },
+        {
+            "apiVersion": "2015-06-15",
+            "type": "Microsoft.Network/virtualNetworks",
+            "location": "[variables('location')]",
+            "name": "[variables('virtualNetworkName')]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[variables('virtualNetworkAddressPrefix')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[variables('subnetName')]",
+                        "properties": {
+                            "addressPrefix": "[variables('virtualNetworkSubnetAddressPrefix')]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "2015-06-15",
+            "type": "Microsoft.Network/networkInterfaces",
+            "location": "[variables('location')]",
+            "name": "[variables('nicName')]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
+                "[concat('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
+                            },
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "2015-06-15",
+            "type": "Microsoft.Compute/virtualMachines",
+            "location": "[variables('location')]",
+            "name": "[parameters('vmName')]",
+            "dependsOn": [
+                "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]",
+                "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+            ],
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "[variables('vmSize')]"
+                },
+                "osProfile": {
+                    "computerName": "[parameters('vmName')]",
+                    "adminUsername": "[parameters('adminUsername')]",
+                    "adminPassword": "[parameters('adminPassword')]"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "[variables('vmPublisher')]",
+                        "offer": "[variables('vmOffer')]",
+                        "sku": "[variables('vmSku')]",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "name": "osdisk",
+                        "vhd": {
+                            "uri": "[concat('https://',parameters('newStorageAccountName'),'.blob.core.windows.net/',variables('blobContainerName'),'/',variables('osDiskName'),'.vhd')]"
+                        },
+                        "caching": "ReadWrite",
+                        "createOption": "FromImage"
+                    }
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "apiVersion": "2015-06-15",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "location": "[variables('location')]",
+            "name": "[concat(parameters('vmName'),'/',parameters('vmExtensionName'))]", //Note the name have to follow this syntax
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+            ],
+            "properties": {
+                //Add the required properties, look here https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json#L422-L463
+                //Install Symantec Endpoint Protection, look here for the needed values https://gist.github.com/sjkp/0432b055400b3c3c4504#file-azure-vm-extensions-L1104-L1110
+                "publisher": "[parameters('vmExtensionPublisher')]",
+                "type": "[parameters('vmExtensionType')]",
+                "typeHandlerVersion": "[parameters('vmExtensionTypeVersion')]",
+                "settings": null
+            }
+        },
+        {
+            "apiVersion": "2015-06-15",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "location": "[variables('location')]",
+            "name": "[concat(parameters('vmName'),'/',parameters('vmDSCExtensionName'))]", //Note the name have to follow this syntax
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+            ],
+            "properties": {
+                //Install DSC Extension, look here for the needed values https://gist.github.com/sjkp/0432b055400b3c3c4504#file-azure-vm-extensions-L885-L891
+                "publisher": "",
+                "type": "",
+                "typeHandlerVersion": "",
+                "settings": null //Replace with the settings object and the correct value from the description
+            }
+        }
+    ]
+}
