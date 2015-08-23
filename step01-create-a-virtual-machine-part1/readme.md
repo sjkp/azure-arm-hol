@@ -1,6 +1,6 @@
 # Create a Virtual Windows Machine part 1
 
-In the first step we are going to prepare an azure resource group for provisioning of Windows Server 2012R from an Azure Resource Manager template. 
+In the first step we are going to prepare an azure resource group for provisioning of Windows Server 2012R2 from an Azure Resource Manager template. 
 
 This first step is purposedly split in two, as provisioning a machine takes a several minutes, so making sure part 1 works before moving to part 2 will save you some time. 
 
@@ -18,7 +18,7 @@ The first three resource have no dependencies, and can be deployed without using
 
 The hands-on lab starting template will encourage you to use variables, for some of the properties to avoid having too many parameters.
 
-The starting template is missing a lot of pieces, you task is to use the schemas linked to above to fill in the missing pieces. Two tips for reading the schemas
+The starting template is missing a lot of pieces, your task is to use the schemas linked to above to fill in the missing pieces. Two tips for reading the schemas
 
 ## Check if a property is required
 ```

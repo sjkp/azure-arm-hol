@@ -38,3 +38,8 @@ Get-AzureVMSize -Location $location
 
 ## Deployment
 [Deployment Guide](../docs/deployment.md)   
+
+## Extra Challenges
+If you need some extra challenges, try to see if you can do the following (note there is no answer on how to do this): 
+- Add a data disk
+- Use a custom VM image

@@ -1,9 +1,9 @@
 # Add loadbalancer
-In this step we will add an internal load balancer in order to prepare for the next step where we are gonna deploy two web servers and load balance between them. 
+In this step we will add a load balancer in order to prepare for the next step where we are gonna deploy two web servers and load balance between them. 
 
 This step doesn't continue directly where step 05 left off, so you have to use a new resource group or delete the old one. 
 
-The virtual machine and the VM extensions are not deployed as part of this template. But we will add them again in the next step.
+The virtual machine and the VM extensions are not deployed as part of this template. But we will add them again in the next step. (Again we leave them out so we can deploy the resource group quicker)
 
 In this step we configure the following resources:
 - A Storage Account

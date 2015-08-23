@@ -1,5 +1,5 @@
 # Setup IIS with DSC (Desired State Configuration)
-To configure the Virtual Machine after is has been provisioned we can use DSC. DSC is added to the machine in the same way as you just added the Symantec Endpoint Protection via a VM extension.
+To configure the Virtual Machine after it has been provisioned we can use DSC. DSC is added to the machine in the same way as you just added the Symantec Endpoint Protection via a VM extension.
 
 The desired state config file we are going to use is quite simple. It looks like this
 ```
@@ -31,7 +31,7 @@ Configuration azuredkwebsite
   }
 } 
 ```
-Note the DSC file have to be placed in a zip file that must be uploaded somewhere so the DSC extension can download and install it on the machine. For this step you can use the provided zip file or you can try to upload one of your own.
+The DSC file have to be added to a zip file that must be uploaded somewhere so the DSC extension can download and install it on the machine. For this step you can use the provided zip file or you can try to upload one of your own.
 
 We will use the same template as in the last step with an extra resource added, namely the DSC VM extension. 
 
@@ -56,3 +56,7 @@ If the installation of the VM DSC extension fails and you want to try over you c
 ```
 Remove-AzureVMDscExtension -ResourceGroupName mytestgroup -VMName azuredkvm -Name <name-of-dsc-extension>
 ```
+
+## Extra Challenges
+If you need some extra challenges, try to see if you can do the following (note there is no answer on how to do this):
+- Upload the zip containing the DSC to Azure blob storage an use a SAS token to avoid it being accessible to everyone
