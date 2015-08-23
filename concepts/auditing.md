@@ -3,9 +3,10 @@ Everything action that is carried out by the Azure Resource Manager control plan
 
 ![The Audit Log can be opened from under Notifications](https://github.com/sjkp/azure-arm-hol/raw/master/concepts/img/azure-audit-log.png)
 
-The interresting PowerShell commands are: 
+The interresting PowerShell commands are:
+ 
 | Command                          	| Description
-| :-------------------------------: | :----------
+| :-------------------------------: | :---------- 
 | Get-AzureSubscriptionIdLog        | Gets the operations associated with the current subscriptionId
 | Get-AzureResourceProviderLog		| Gets the operations associated with a Resource Provider
 | Get-AzureResourceLog				| Gets the operations associated with a ResourceId 	
