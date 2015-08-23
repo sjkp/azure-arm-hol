@@ -3,7 +3,7 @@ Azure Resource Explorer is an interactive web site where you can browse your Azu
 
 The web site, doesn't support all aspects of ARM but it a great learning and debugging tool. 
 
-![The azure resource explorer uses the REST interface to show the JSON for all your resources](https://github.com/sjkp/azure-arm-hol/master/img/azure-resource-explorer.png) 
+![The azure resource explorer uses the REST interface to show the JSON for all your resources](https://github.com/sjkp/azure-arm-hol/raw/master/img/azure-resource-explorer.png) 
 
 
 https://resources.azure.com/
