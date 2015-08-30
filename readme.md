@@ -18,6 +18,14 @@ If you get stuck or just want inspiration the complete folder contains one possi
 
 Please note that if you try to run the complete solution with the provided *.param.json files you might encounter errors if other people have deployed resources with the same names, so you should always update the names to be unique.  
 
+##Before you start
+The following resource can help you get started
+- [Presentation](presentation/Azure Resource Manager.pptx)
+- [Getting Started With Azure PowerShell](docs/getting-started-with-azure-powershell.md)
+- [Azure Resource Manager Concepts](concepts/readme.md)
+- [Azure Resource Manager Template Functions](docs/arm-template-functions.md)
+
+If you need ti
 
 ##Virtual Machines Lab
 The Virtual Machine lab contains serveral task that will teach you how to provision Azure VMs by using Azure Resource Manager (ARM) Templates.
