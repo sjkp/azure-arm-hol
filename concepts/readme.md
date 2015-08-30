@@ -8,4 +8,4 @@ This folder contains an explanation and how to of some important concepts suppor
 - [Auditing](auditing.md)
 - [Azure Resource Explorer](azure-resource-explorer.md)
 - ARM Client
-- Template Galleries
+- [Template Galleries](template-galleries.md)
