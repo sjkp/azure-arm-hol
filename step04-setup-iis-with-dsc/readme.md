@@ -2,7 +2,7 @@
 To configure the Virtual Machine after it has been provisioned we can use DSC. DSC is added to the machine in the same way as you just added the Symantec Endpoint Protection via a VM extension.
 
 The desired state config file we are going to use is quite simple. It looks like this
-```
+```powershell
 Configuration azuredkwebsite
 {
   param ($MachineName)
@@ -38,7 +38,7 @@ We will use the same template as in the last step with an extra resource added, 
 You can find the information for the DSC VM extension in https://gist.github.com/sjkp/0432b055400b3c3c4504. 
 
 Note that the DSC extension does require a settings object, the settings object have the following structure
-```
+```json
 {
   "ModulesUrl": "", //The url to the zip file containing the DSC module
   "SasToken": "", //SAS token if the DSC is stored in a protected blob storage

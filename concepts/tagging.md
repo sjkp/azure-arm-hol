@@ -8,7 +8,7 @@ Tags can be used for whatever you see fit, some ideas could be.
 
 ## How to add tags
 You can easily add tags to resources when you author your ARM templates, adding a tag to a resource is as simple as 
-```
+```json
 {
         "apiVersion": "2015-05-01-preview",
         "type": "Microsoft.Storage/storageAccounts",
@@ -25,7 +25,7 @@ You can easily add tags to resources when you author your ARM templates, adding 
 ```
 
 Or you can use the following PowerShell Commands
-```
+```powershell
 #Create a new tag
 New-AzureTag -Name MyTag
 #Create a new tag with a value

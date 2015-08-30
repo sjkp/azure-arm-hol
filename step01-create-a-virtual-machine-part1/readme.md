@@ -21,7 +21,7 @@ The hands-on lab starting template will encourage you to use variables, for some
 The starting template is missing a lot of pieces, your task is to use the schemas linked to above to fill in the missing pieces. Two tips for reading the schemas
 
 ## Check if a property is required
-```
+```json
         "subnetProperties": {
             "properties": {
                 "addressPrefix": {
@@ -47,10 +47,11 @@ From the above schema definition for properties of a subnet, it can be seen that
 
 ## Follow the $ref
 The schemas makes heavy use of references, so when you encounter, e.g.
-```
+```json
  	 "$ref": "#/definitions/subnetProperties"
 ``` 
 Just find where the subnetProperties is defined to figure out what properties are available.  
 
 ## Deployment
 [Deployment Guide](../docs/deployment.md)   
+

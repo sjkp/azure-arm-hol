@@ -18,7 +18,7 @@ In order to specify an image you must know the following three things
 - SKU 
 
 All of these things can be found with PowerShell, from an Azure PowerShell use the following commands:
-```
+```powershell
 Switch-AzureMode AzureResourceManager
 $location = "West Europe"
 Get-AzureVMImagePublisher -Location $location | Select PublisherName
@@ -30,14 +30,20 @@ Get-AzureVMImageSku -Location $location -Publisher $publisher -Offer $offer | Se
 
 ##VM Size (hardwareProfile)
 When deploying a VM we also need to specify its size (its hardwareProfile) as the different type of machines are dependend on the location you deploy to it is relevant to use the following PowerShell commands to figure out what there is to choose from
-```
+```powershell
 Switch-AzureMode AzureResourceManager
 $location = "West Europe"
 Get-AzureVMSize -Location $location
 ``` 
 
 ## Deployment
-[Deployment Guide](../docs/deployment.md)   
+[Deployment Guide](../docs/deployment.md)  
+
+### Remote desktop 
+You can download the remote desktop file, using the following powershell.
+```Powershell
+Get-AzureRemoteDesktopFile -ResourceGroupName mytestgroup -Name azuredkvm -LocalPath <folder-path>\azuredkvm.rdp
+``` 
 
 ## Extra Challenges
 If you need some extra challenges, try to see if you can do the following (note there is no answer on how to do this): 
