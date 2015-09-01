@@ -8,5 +8,4 @@ This folder contains an explanation and how to of some important concepts suppor
 - [Auditing](auditing.md)
 - [Sub templating](sub-templating.md)
 - [Azure Resource Explorer](azure-resource-explorer.md)
-
-- Template Galleries
+- [Template Galleries](template-galleries.md)
