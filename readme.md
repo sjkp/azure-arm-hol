@@ -20,12 +20,10 @@ Please note that if you try to run the complete solution with the provided *.par
 
 ##Before you start
 The following resource can help you get started
-- [Presentation](presentation/Azure Resource Manager.pptx)
+- [Presentation](https://github.com/sjkp/azure-arm-hol/raw/master/presentation/Azure%20Resource%20Manager.pptx)
 - [Getting Started With Azure PowerShell](docs/getting-started-with-azure-powershell.md)
 - [Azure Resource Manager Concepts](concepts/readme.md)
 - [Azure Resource Manager Template Functions](docs/arm-template-functions.md)
-
-If you need ti
 
 ##Virtual Machines Lab
 The Virtual Machine lab contains serveral task that will teach you how to provision Azure VMs by using Azure Resource Manager (ARM) Templates.
