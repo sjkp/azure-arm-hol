@@ -44,30 +44,6 @@
                 "description": "The name of the virtual machine"
             }
         },
-        "vmExtensionName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the VM extension (no spaces or special characters)"
-            }
-        },
-        "vmExtensionPublisher": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the VM extension publisher"
-            }
-        },
-        "vmExtensionType": {
-            "type": "string",
-            "metadata": {
-                "description": "The type of the VM extension"
-            }
-        },
-        "vmExtensionTypeVersion": {
-            "type": "string",
-            "metadata": {
-                "description": "The version of the VM extension (should only be the major minor version number, e.g. 1.5, not 1.5.2.4.5)"
-            }
-        },
         "vmDSCExtensionName": {
             "type": "string",
             "metadata": {

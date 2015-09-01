@@ -44,30 +44,6 @@
                 "description": "The name of the virtual machine"
             }
         },
-        "vmExtensionName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the VM extension (no spaces or special characters)"
-            }
-        },
-        "vmExtensionPublisher": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the VM extension publisher"
-            }
-        },
-        "vmExtensionType": {
-            "type": "string",
-            "metadata": {
-                "description": "The type of the VM extension"
-            }
-        },
-        "vmExtensionTypeVersion": {
-            "type": "string",
-            "metadata": {
-                "description": "The version of the VM extension (should only be the major minor version number, e.g. 1.5, not 1.5.2.4.5)"
-            }
-        },
         "vmDSCExtensionName": {
             "type": "string",
             "metadata": {
@@ -221,28 +197,12 @@
             "apiVersion": "2015-06-15",
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "location": "[variables('location')]",
-            "name": "[concat(parameters('vmName'),'/',parameters('vmExtensionName'))]", //Note the name have to follow this syntax
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
-            ],
-            "properties": {
-                //Add the required properties, look here https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json#L422-L463
-                //Install Symantec Endpoint Protection, look here for the needed values https://gist.github.com/sjkp/0432b055400b3c3c4504#file-azure-vm-extensions-L1104-L1110
-                "publisher": "[parameters('vmExtensionPublisher')]",
-                "type": "[parameters('vmExtensionType')]",
-                "typeHandlerVersion": "[parameters('vmExtensionTypeVersion')]",
-                "settings": null
-            }
-        },
-        {
-            "apiVersion": "2015-06-15",
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "location": "[variables('location')]",
             "name": "[concat(parameters('vmName'),'/',parameters('vmDSCExtensionName'))]", //Note the name have to follow this syntax
             "dependsOn": [
                 "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
             ],
             "properties": {
+                //Add the required properties, look here https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Compute.json#L422-L463
                 //Install DSC Extension, look here for the needed values https://gist.github.com/sjkp/0432b055400b3c3c4504#file-azure-vm-extensions-L885-L891
                 "publisher": "",
                 "type": "",

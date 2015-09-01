@@ -1,5 +1,5 @@
 # Setup IIS with DSC (Desired State Configuration)
-To configure the Virtual Machine after it has been provisioned we can use DSC. DSC is added to the machine in the same way as you just added the Symantec Endpoint Protection via a VM extension.
+To configure the Virtual Machine after it has been provisioned we can use DSC. DSC is added to the machine via a VM extension.
 
 The desired state config file we are going to use is quite simple. It looks like this
 ```powershell

@@ -17,22 +17,6 @@
     "vmName": {
       "value": ""
     },
-    "vmExtensionName": 
-    {
-      "value": ""
-    },
-    "vmExtensionPublisher":
-    {
-      "value": ""
-    },
-    "vmExtensionType":
-    {
-      "value": ""
-    },
-    "vmExtensionTypeVersion":
-    {
-      "value": ""
-    },
     "vmDSCExtensionName": {
       "value": ""
     },

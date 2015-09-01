@@ -17,18 +17,6 @@
     "vmName": {
       "value": "azuredkvm"
     },
-    "vmExtensionName": {
-      "value": "SymantecProtection"
-    },
-    "vmExtensionPublisher": {
-      "value": "Symantec"
-    },
-    "vmExtensionType": {
-      "value": "SymantecEndpointProtection"
-    },
-    "vmExtensionTypeVersion": {
-      "value": "12.1"
-    },
      "vmDSCExtensionName": {
       "value": "DSCSetupIIS"
     },
