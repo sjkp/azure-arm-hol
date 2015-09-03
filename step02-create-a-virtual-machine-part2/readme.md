@@ -33,7 +33,7 @@ When deploying a VM we also need to specify its size (its hardwareProfile) as th
 ```powershell
 Switch-AzureMode AzureResourceManager
 $location = "West Europe"
-Get-AzureVMSize -Location $location
+Get-AzureVMSize -Location $location | ogv 
 ``` 
 
 ## Deployment

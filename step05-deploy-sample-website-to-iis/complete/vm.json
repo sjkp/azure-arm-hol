@@ -80,7 +80,7 @@
         "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]",
         "virtualNetworkName": "vnet",
         "nicName": "azuredknic",
-        "vmSize": "Basic_A1",
+        "vmSize": "Basic_A2",
         "vmPublisher": "MicrosoftWindowsServer",
         "vmOffer": "WindowsServer",
         "vmSku": "2012-R2-Datacenter",

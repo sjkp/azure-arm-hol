@@ -3,7 +3,7 @@ These hands-on labs are designed to help you get familiar with Azure Resource Ma
 
 #Prerequisites
 Before you can complete the labs you need a few things
-- [Azure PowerShell](http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x406)
+- [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
 - [An Azure Subscription](https://azure.microsoft.com/) (a trial account is fine)
 - [Visual Studio Code](https://code.visualstudio.com/) (or another text editor capable of highligting JSON, for you own sake don't use notepad)
 

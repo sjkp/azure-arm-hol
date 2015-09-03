@@ -15,6 +15,8 @@ Thus in order to do anything ARM related you have to switch mode with
 Switch-AzureMode AzureResourceManager
 #To switch back to Service Management mode
 Switch-AzureMode AzureServiceManagement
+#To see which mode you are in, you can use and look which module from the Microsoft SDKs\Azure that are loaded.
+$env:psmodulepath 
 ```  
 
 From the [25/9/2015](https://github.com/Azure/azure-powershell/wiki/Deprecation-of-Switch-AzureMode-in-Azure-PowerShell) this switching back and forth between the modes will be changed, and all the cmdlets from Azure Resource Manager module will be renamed from [Verb]-Azure[Noun] to [Verb]-AzureRM[Noun]
@@ -93,6 +95,15 @@ $cred = New-Object System.Management.Automation.PSCredential(<username>, $secure
 Add-AzureAccount -Credential $cred
 ```
 Now you PowerShell context is authenticated.
+
+Alternatively you can use this shorter approach (it will store both password, and username but you will not be able specify you own encryption key, so you will be forced to use Windows Data Protection API). 
+```powershell
+##To Export
+$cred = Get-Credential
+$cred | Export-Clixml -Path "<your-path>\azure.credentials"
+##To Import
+$cred = Import-Clixml -Path "<your-path>\azure.credentials"
+```
 
 ###Setup a PowerShell Profile, for easy Authentication
 If you work a lot with Azure PowerShell, it can be tedious, to login in every session. To ease the process you can create a profile that contains the above mentions scripts. 

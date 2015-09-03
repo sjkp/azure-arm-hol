@@ -84,7 +84,7 @@
         "loadbalancerName": "azuredkLoadbalancer",
         "loadbalancerPrivateIP": "10.0.0.5",
         "numberOfMachines": 2,
-        "vmSize": "Standard_A1", //Load balacing are only supported for Standard VMs
+        "vmSize": "Standard_D2", //Load balacing are only supported for Standard VMs
         "vmPublisher": "MicrosoftWindowsServer",
         "vmOffer": "WindowsServer",
         "vmSku": "2012-R2-Datacenter",
