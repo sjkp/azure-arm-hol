@@ -26,7 +26,7 @@ If you encounter problems during the installation of the VM Extension, you can e
 
 
 ## Deployment
-[Deployment Guide](../docs/deployment.md)   
+[Deployment Guide](../../docs/deployment.md)   
 
 To check if the VM Extension is properly installed you can use the following command
 ```powershell

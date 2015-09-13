@@ -49,11 +49,20 @@
             "metadata": {
                 "description": "The type of storage account to provision"
             }
-        }
+        },
+        "sqlServerName": {
+            "type": "string"
+        },
+        "sqlServerAdmin": {
+            "type": "string"
+        },
+        "sqlServerAdminPassword": {
+            "type": "securestring"
+        }        
     },
     "variables": {
         "slotName": "Staging",
-        "storageApiVersion": "2015-05-01-preview" //providers('Microsoft.Storage', 'storageAccounts').apiVersions[0] <- this would be a dynamic way to get it, but currently there are some issue with it resolving a newer version than actually works.
+        "storageApiVersion": "2015-05-01-preview" 
     },
     "resources": [        
         {
@@ -102,11 +111,10 @@
                                 "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]"
                             ],
                             "properties": {
-                                "testSetting": "[concat('Hello world from ', variables('slotName'))]",
-                                //Add a connection string to the storage account, remember to make this resource dependent on the storage account
+                                "testSetting": "[concat('Hello world from ', variables('slotName'))]",                                
                                 "AzureStorageAccount": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('newStorageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('newStorageAccountName')), variables('storageApiVersion')).key1,';')]"
                             }
-                        }
+                        }                        
                     ]
                 },
                 {
@@ -115,17 +123,19 @@
                     "type": "config",
                     "dependsOn": [
                         "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]",
-                        "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]" //You can either create the dependency by using resourceId or name
+                        "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]"
                     ],
                     "properties": {
                         "testSetting": "Hello world from prod",
                         "AzureStorageAccount": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('newStorageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('newStorageAccountName')),  variables('storageApiVersion')).key1,';')]"
                     }
+                },
+                {
+                    //Add connection string
                 }
             ]
         },
         {
-             //Add Azure storage account  
             "apiVersion": "2015-05-01-preview",
             "location": "[parameters('siteLocation')]",
             "name": "[parameters('newStorageAccountName')]",
@@ -133,6 +143,13 @@
             "properties": {
                 "accountType": "[parameters('storageAccountType')]"
             }            
+        },
+        {
+            //Add sql server       
+        },
+        {
+            //Add sql database
         }
+        
     ]
 }

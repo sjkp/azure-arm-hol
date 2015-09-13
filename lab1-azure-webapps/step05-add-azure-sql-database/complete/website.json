@@ -1,0 +1,339 @@
+﻿{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sitename": {
+            "type": "string"
+        },
+        "hostingPlanName": {
+            "type": "string"
+        },
+        "siteLocation": {
+            "type": "string"
+        },
+        "sku": {
+            "type": "string",
+            "defaultValue": "s1",
+            "metadata": {
+                "description": "The hosting plan sku"
+            }
+        },
+        "tier": {
+            "type": "string",
+            "defaultValue": "Standard",
+            "allowedValues": [
+                "Free",
+                "Shared",
+                "Basic",
+                "Standard",
+                "Premium"
+            ],
+            "metadata": {
+                "description": "the pricing tier"
+            }
+        },
+        "newStorageAccountName": {
+            "type": "string",
+            "metadata": {
+                "description": "Unique DNS Name for the Storage Account."
+            }
+        },
+        "storageAccountType": {
+            "type": "string",
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_ZRS"
+            ],
+            "defaultValue": "Standard_LRS",
+            "metadata": {
+                "description": "The type of storage account to provision"
+            }
+        },
+        "sqlServerName": {
+            "type": "string"
+        },
+        "sqlServerAdmin": {
+            "type": "string"
+        },
+        "sqlServerAdminPassword": {
+            "type": "securestring"
+        },
+        "sqlDatabaseEdition": {
+            "type": "string",
+            "defaultValue": "Basic",
+            "allowedValues": [
+                "Web",
+                "Business",
+                "Basic",
+                "Standard",
+                "Premium"
+            ]
+        },
+        "sqlDatabaseCollation": {
+            "type": "string",
+            "defaultValue": "SQL_Latin1_General_CP1_CI_AS",
+            "allowedValues": [
+                "SQL_Latin1_General_Cp437_CS_AS_KI_WI",
+                "SQL_Latin1_General_Cp437_CI_AS_KI_WI",
+                "SQL_Latin1_General_Pref_Cp437_CI_AS_KI_WI",
+                "SQL_Latin1_General_Cp437_CI_AI_KI_WI",
+                "SQL_Latin1_General_Cp437_BIN",
+                "SQL_Latin1_General_Cp850_BIN",
+                "SQL_Latin1_General_Cp850_CS_AS_KI_WI",
+                "SQL_Latin1_General_Cp850_CI_AS_KI_WI",
+                "SQL_Latin1_General_Cp850_CI_AI_KI_WI",
+                "SQL_Latin1_General_Pref_Cp850_CI_AS_KI_WI",
+                "SQL_1xCompat_Cp850_CI_AS_KI_WI",
+                "SQL_Latin1_General_CP1_CI_AS",
+                "SQL_Latin1_General_Cp1_CS_AS_KI_WI",
+                "SQL_Latin1_General_Cp1_CI_AS_KI_WI",
+                "SQL_Latin1_General_Pref_Cp1_CI_AS_KI_WI",
+                "SQL_Latin1_General_Cp1_CI_AI_KI_WI",
+                "SQL_AltDiction_Cp850_CS_AS_KI_WI",
+                "SQL_AltDiction_Pref_Cp850_CI_AS_KI_WI",
+                "SQL_AltDiction_Cp850_CI_AI_KI_WI",
+                "SQL_Scandainavian_Pref_Cp850_CI_AS_KI_WI",
+                "SQL_Scandainavian_Cp850_CS_AS_KI_WI",
+                "SQL_Scandainavian_Cp850_CI_AS_KI_WI",
+                "SQL_AltDiction_Cp850_CI_AS_KI_WI",
+                "SQL_Latin1_General_1250_BIN",
+                "SQL_Latin1_General_Cp1250_CS_AS_KI_WI",
+                "SQL_Latin1_General_Cp1250_CI_AS_KI_WI",
+                "SQL_Czech_Cp1250_CS_AS_KI_WI",
+                "SQL_Czech_Cp1250_CI_AS_KI_WI",
+                "SQL_Hungarian_Cp1250_CS_AS_KI_WI",
+                "SQL_Hungarian_Cp1250_CI_AS_KI_WI",
+                "SQL_Polish_Cp1250_CS_AS_KI_WI",
+                "SQL_Polish_Cp1250_CI_AS_KI_WI",
+                "SQL_Romanian_Cp1250_CS_AS_KI_WI",
+                "SQL_Romanian_Cp1250_CI_AS_KI_WI",
+                "SQL_Croatian_Cp1250_CS_AS_KI_WI",
+                "SQL_Croatian_Cp1250_CI_AS_KI_WI",
+                "SQL_Slovak_Cp1250_CS_AS_KI_WI",
+                "SQL_Slovak_Cp1250_CI_AS_KI_WI",
+                "SQL_Slovenian_Cp1250_CS_AS_KI_WI",
+                "SQL_Slovenian_Cp1250_CI_AS_KI_WI",
+                "SQL_Latin1_General_1251_BIN",
+                "SQL_Latin1_General_Cp1251_CS_AS_KI_WI",
+                "SQL_Latin1_General_Cp1251_CI_AS_KI_WI",
+                "SQL_Ukrainian_Cp1251_CS_AS_KI_WI",
+                "SQL_Ukrainian_Cp1251_CI_AS_KI_WI",
+                "SQL_Latin1_General_1253_BIN",
+                "SQL_Latin1_General_Cp1253_CS_AS_KI_WI",
+                "SQL_Latin1_General_Cp1253_CI_AS_KI_WI",
+                "SQL_Latin1_General_Cp1253_CI_AI_KI_WI",
+                "SQL_Latin1_General_1254_BIN",
+                "SQL_Latin1_General_Cp1254_CS_AS_KI_WI",
+                "SQL_Latin1_General_Cp1254_CI_AS_KI_WI",
+                "SQL_Latin1_General_1255_BIN",
+                "SQL_Latin1_General_Cp1255_CS_AS_KI_WI",
+                "SQL_Latin1_General_Cp1255_CI_AS_KI_WI",
+                "SQL_Latin1_General_1256_BIN",
+                "SQL_Latin1_General_Cp1256_CS_AS_KI_WI",
+                "SQL_Latin1_General_Cp1256_CI_AS_KI_WI",
+                "SQL_Latin1_General_1257_BIN",
+                "SQL_Latin1_General_Cp1257_CS_AS_KI_WI",
+                "SQL_Latin1_General_Cp1257_CI_AS_KI_WI",
+                "SQL_Estonian_Cp1257_CS_AS_KI_WI",
+                "SQL_Estonian_Cp1257_CI_AS_KI_WI",
+                "SQL_Latvian_Cp1257_CS_AS_KI_WI",
+                "SQL_Latvian_Cp1257_CI_AS_KI_WI",
+                "SQL_Lithuanian_Cp1257_CS_AS_KI_WI",
+                "SQL_Lithuanian_Cp1257_CI_AS_KI_WI",
+                "SQL_Danish_Pref_Cp1_CI_AS_KI_WI",
+                "SQL_SwedishPhone_Pref_Cp1_CI_AS_KI_WI",
+                "SQL_SwedishStd_Pref_Cp1_CI_AS_KI_WI",
+                "SQL_Icelandic_Pref_Cp1_CI_AS_KI_WI"
+            ]
+        },
+        "sqlDatabaseMaxSize": {
+            "type": "string",
+            "defaultValue": "2147483648", //2GB max for Basic
+            "allowedValues": [
+                "104857600",
+                "524288000",
+                "1073741824",
+                "2147483648",
+                "5368709120",
+                "10737418240",
+                "21474836480",
+                "32212254720",
+                "42949672960",
+                "53687091200",
+                "107374182400",
+                "161061273600",
+                "214748364800",
+                "268435456000",
+                "322122547200",
+                "429496729600",
+                "536870912000"
+            ],
+            "metadata": {
+                "description": "Microsoft.Sql/server/databases: Sets the maximum size, in bytes, for the database. This value must be within the range of allowed values for Edition."
+            }
+        },
+        "sqlPerformanceLevel": {
+            "type": "string",
+            "defaultValue": "DD6D99BB-F193-4EC1-86F2-43D3BCCBC49C",
+            //Use e.g Get-AzureSqlDatabaseServiceObjective to get a list of the lasted performance levels            
+            "allowedValues": [
+                "910B4FCB-8A29-4C3E-958F-F7BA794388B2",
+                "DD6D99BB-F193-4EC1-86F2-43D3BCCBC49C",
+                "F1173C43-91BD-4AAA-973C-54E79E15235B",
+                "1B1EBD4D-D903-4BAA-97F9-4EA675F5E928",
+                "455330E1-00CD-488B-B5FA-177C226F28B7",
+                "789681B8-CA10-4EB0-BDF2-E0B050601B40",
+                "7203483A-C4FB-4304-9E9F-17C71C904F5D",
+                "A7D1B92D-C987-4375-B54D-2B1D0E0F5BB0",
+                "A7C4C615-CFB1-464B-B252-925BE0A19446"
+            ],
+            "metadata": {
+                "description": "Microsoft.Sql/server/databases: The GUID corresponding to the performance level for Edition (https://msdn.microsoft.com/en-us/library/azure/dn741336.aspx). Shared = 910B4FCB-8A29-4C3E-958F-F7BA794388B2, Basic = DD6D99BB-F193-4EC1-86F2-43D3BCCBC49C, S0 = F1173C43-91BD-4AAA-973C-54E79E15235B, S1 = 1B1EBD4D-D903-4BAA-97F9-4EA675F5E928, S2 = 455330E1-00CD-488B-B5FA-177C226F28B7, S3 = 789681B8-CA10-4EB0-BDF2-E0B050601B40, P1 = 7203483A-C4FB-4304-9E9F-17C71C904F5D, P2 = A7D1B92D-C987-4375-B54D-2B1D0E0F5BB0, P3 = A7C4C615-CFB1-464B-B252-925BE0A19446"
+            }
+        }
+    },
+    "variables": {
+        "slotName": "Staging",
+        "storageApiVersion": "2015-05-01-preview",
+        "databaseName": "azuredkdatabase"
+    },
+    "resources": [        
+        {
+            "apiVersion": "2015-08-01",
+            "location": "[parameters('siteLocation')]",
+            "name": "[parameters('hostingPlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "properties": {
+                "name": "[parameters('hostingPlanName')]",
+                "numberOfWorkers": 1
+            },
+            "sku": {
+                "name": "[parameters('sku')]",
+                "tier": "[parameters('tier')]"
+            }
+        },
+        {
+            "apiVersion": "2015-08-01",
+            "location": "[parameters('siteLocation')]",
+            "name": "[parameters('sitename')]",
+            "type": "Microsoft.Web/sites",
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverFarms/', parameters('hostingPlanName'))]"
+            ],
+            "properties": {
+                "name": "[parameters('sitename')]",
+                "serverFarmId": "[parameters('hostingPlanName')]"
+            },
+            "resources": [
+                {
+                    "apiVersion": "2015-08-01",
+                    "name": "[variables('slotName')]",
+                    "type": "slots",
+                    "location": "[parameters('siteLocation')]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+                    ],
+                    "properties": {},
+                    "resources": [
+                        {
+                            "apiVersion": "2015-08-01",
+                            "name": "appsettings",
+                            "type": "config",
+                            "dependsOn": [
+                                "[resourceId('Microsoft.Web/Sites/slots', parameters('siteName'), variables('slotName'))]",
+                                "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]"
+                            ],
+                            "properties": {
+                                "testSetting": "[concat('Hello world from ', variables('slotName'))]",                                
+                                "AzureStorageAccount": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('newStorageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('newStorageAccountName')), variables('storageApiVersion')).key1,';')]"
+                            }
+                        }                       
+                    ]
+                },
+                {
+                    "apiVersion": "2015-08-01",
+                    "name": "appsettings",
+                    "type": "config",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]",
+                        "[concat('Microsoft.Storage/storageAccounts/', parameters('newStorageAccountName'))]"
+                    ],
+                    "properties": {
+                        "testSetting": "Hello world from prod",
+                        "AzureStorageAccount": "[concat('DefaultEndpointsProtocol=https;AccountName=',parameters('newStorageAccountName'),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('newStorageAccountName')),  variables('storageApiVersion')).key1,';')]"
+                    }
+                },
+                {
+                    //Add connection string
+                    "apiVersion": "2015-08-01",
+                    "name": "connectionstrings",
+                    "type": "config",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]",
+                        "[concat('Microsoft.Sql/servers/',parameters('sqlServerName'))]"
+                    ],
+                    "properties": {
+                        "DefaultConnection": {
+                            "value": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', parameters('sqlServerName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', variables('databaseName'), ';User Id=', parameters('sqlServerAdmin'), '@', parameters('sqlServerName'), ';Password=', parameters('sqlServerAdminPassword'), ';')]",
+                            "type": "SQLAzure"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "apiVersion": "2015-05-01-preview",
+            "location": "[parameters('siteLocation')]",
+            "name": "[parameters('newStorageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "properties": {
+                "accountType": "[parameters('storageAccountType')]"
+            }            
+        },
+        {
+            //Add sql server
+            "apiVersion": "2014-04-01",
+            "location": "[parameters('siteLocation')]",
+            "name": "[parameters('sqlServerName')]",
+            "type": "Microsoft.Sql/servers",
+            "properties": {
+                "version": "12.0",
+                "administratorLogin": "[parameters('sqlServerAdmin')]",
+                "administratorLoginPassword": "[parameters('sqlServerAdminPassword')]" 
+            },
+            "resources": [
+                {
+                    //Add sql database
+                    "apiVersion": "2014-04-01",
+                    "location": "[parameters('siteLocation')]",
+                    "name": "[variables('databaseName')]",
+                    "type": "databases",
+                    "dependsOn": [
+                        "[concat('Microsoft.Sql/servers/',parameters('sqlServerName'))]"
+                    ],
+                    "properties": {
+                        "edition": "[parameters('sqlDatabaseEdition')]",
+                        "collation": "[parameters('sqlDatabaseCollation')]",
+                        "maxSizeBytes": "[parameters('sqlDatabaseMaxSize')]",
+                        "requestedServiceObjectiveId": "[parameters('sqlPerformanceLevel')]"
+                    }
+                },
+                {
+                    "apiVersion": "2014-04-01",
+                    "name": "AzureServiceFirewallRule",
+                    "location": "[parameters('siteLocation')]",
+                    "type": "firewallrules",
+                    "dependsOn": [
+                        "[concat('Microsoft.Sql/servers/',parameters('sqlServerName'))]"
+                    ],
+                    "properties": 
+                    {
+                        "endIpAddress": "0.0.0.0",
+                        "startIpAddress": "0.0.0.0"
+                    }
+                }
+            ]
+        }        
+    ]
+}

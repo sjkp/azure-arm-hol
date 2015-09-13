@@ -3,16 +3,25 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "siteName": {
-            "value": "azuredktest"
+            "value": ""
         },
         "hostingPlanName": {
-            "value": "azuredk-hostingplan"
+            "value": ""
         },
         "siteLocation": {
-            "value": "West Europe"
+            "value": ""
         },
         "newStorageAccountName": {
-            "value": "azuredkwebsitestorage"
-        }       
+            "value": ""
+        },
+        "sqlServerName": {
+            "value": ""
+        },
+        "sqlServerAdmin": {
+            "value": ""
+        },
+        "sqlServerAdminPassword": {
+            "value": ""
+        }  
     }
 }

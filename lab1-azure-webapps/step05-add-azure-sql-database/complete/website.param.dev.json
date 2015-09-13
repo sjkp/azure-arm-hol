@@ -13,6 +13,15 @@
         },
         "newStorageAccountName": {
             "value": "azuredkwebsitestorage"
-        }       
+        },
+        "sqlServerName": {
+            "value": "azuredksql"
+        },
+        "sqlServerAdmin": {
+            "value": "azuredk"
+        },
+        "sqlServerAdminPassword": {
+            "value": "HighlyS3cure"
+        }  
     }
 }
