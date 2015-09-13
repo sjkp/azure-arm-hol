@@ -1,0 +1,41 @@
+﻿{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sitename": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-08-01",
+            "location": "[parameters('siteLocation')]",
+            "name": "[parameters('hostingPlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "properties": {
+                "name": "[parameters('hostingPlanName')]",
+                "numberOfWorkers": 1
+            },
+            "sku": {
+                "name": "[parameters('sku')]",
+                "tier": "[parameters('tier')]"
+            }
+        },
+        //Create the Microsoft.Web/sites resource
+        {
+            "apiVersion": "",
+            "name": "",
+            "type": "",
+            "location": "",
+            "tags": {
+                "displayName": ""
+            },
+            "dependsOn": [
+                //build a string where you concatenate the resource type with the name of the resource e.g. "<resource-type>/<name-of-resource>" 
+            ],
+            "properties": {
+                //Look at the schema to find the available properties
+            }
+        }
+    ]
+}
