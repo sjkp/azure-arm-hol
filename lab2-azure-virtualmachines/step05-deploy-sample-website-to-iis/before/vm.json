@@ -203,21 +203,6 @@
             "apiVersion": "2015-06-15",
             "type": "Microsoft.Compute/virtualMachines/extensions",
             "location": "[variables('location')]",
-            "name": "[concat(parameters('vmName'),'/',parameters('vmExtensionName'))]", 
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
-            ],
-            "properties": {
-                "publisher": "[parameters('vmExtensionPublisher')]",
-                "type": "[parameters('vmExtensionType')]",
-                "typeHandlerVersion": "[parameters('vmExtensionTypeVersion')]",
-                "settings": null
-            }
-        },
-        {
-            "apiVersion": "2015-06-15",
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "location": "[variables('location')]",
             "name": "[concat(parameters('vmName'),'/',parameters('vmDSCExtensionName'))]", 
             "dependsOn": [
                 "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"

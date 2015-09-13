@@ -49,7 +49,7 @@ Note that the DSC extension does require a settings object, the settings object 
 }
 ``` 
 ## Deployment
-[Deployment Guide](../docs/deployment.md)
+[Deployment Guide](../../docs/deployment.md)
 
 ###Remove the VM DSC Extension
 If the installation of the VM DSC extension fails and you want to try over you can completely remove it from the VM using the following command

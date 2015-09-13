@@ -37,7 +37,7 @@ Get-AzureVMSize -Location $location | ogv
 ``` 
 
 ## Deployment
-[Deployment Guide](../docs/deployment.md)  
+[Deployment Guide](../../docs/deployment.md)  
 
 ### Remote desktop 
 You can download the remote desktop file, using the following powershell.

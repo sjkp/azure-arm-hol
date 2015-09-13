@@ -1,0 +1,104 @@
+﻿{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sitename": {
+            "type": "string"
+        },
+        "hostingPlanName": {
+            "type": "string"
+        },
+        "siteLocation": {
+            "type": "string"
+        },
+        "sku": {
+            "type": "string",
+            "defaultValue": "s1",
+            "metadata": {
+                "description": "The hosting plan sku"
+            }
+        },
+        "tier": {
+            "type": "string",
+            "defaultValue": "Standard",
+            "allowedValues": [
+                "Free",
+                "Shared",
+                "Basic",
+                "Standard",
+                "Premium"
+            ],
+            "metadata": {
+                "description": "the pricing tier"
+            }
+        }
+    },
+    "variables": {
+        "slotName": "Staging"
+    },
+    "resources": [
+        {
+            "apiVersion": "2015-08-01",
+            "location": "[parameters('siteLocation')]",
+            "name": "[parameters('hostingPlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "properties": {
+                "name": "[parameters('hostingPlanName')]",
+                "numberOfWorkers": 1
+            },
+            "sku": {
+                "name": "[parameters('sku')]",
+                "tier": "[parameters('tier')]"
+            }
+        },
+        {
+            "apiVersion": "2015-08-01",
+            "location": "[parameters('siteLocation')]",
+            "name": "[parameters('sitename')]",
+            "type": "Microsoft.Web/sites",
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverFarms/', parameters('hostingPlanName'))]"
+            ],
+            "properties": {
+                "name": "[parameters('sitename')]",
+                "serverFarmId": "[parameters('hostingPlanName')]"
+            },
+            "resources": [
+                {
+                    "apiVersion": "2015-08-01",
+                    "name": "[variables('slotName')]",
+                    "type": "slots",
+                    "location": "[parameters('siteLocation')]",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+                    ],
+                    "properties": {},
+                    "resources": [
+                        {
+                            "apiVersion": "2015-08-01",
+                            "name": "appsettings",
+                            "type": "config",
+                            "dependsOn": [
+                                "[resourceId('Microsoft.Web/Sites/slots', parameters('siteName'), variables('slotName'))]"
+                            ],
+                            "properties": {
+                                "testSetting": "[concat('Hello world from ', variables('slotName'))]"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "apiVersion": "2015-08-01",
+                    "name": "appsettings",
+                    "type": "config",
+                    "dependsOn": [
+                        "[resourceId('Microsoft.Web/Sites', parameters('siteName'))]"
+                    ],
+                    "properties": {
+                        "testSetting": "Hello world from prod"
+                    }
+                }
+            ]
+        }
+    ]
+}

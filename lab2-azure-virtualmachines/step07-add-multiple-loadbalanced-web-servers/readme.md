@@ -29,4 +29,4 @@ The task in this step is to use the copy functionality to copy the nics and the 
 Remember that load balacing are only supported by Standard VMs not Basic. 
 
 ## Deployment
-[Deployment Guide](../docs/deployment.md)
+[Deployment Guide](../../docs/deployment.md)

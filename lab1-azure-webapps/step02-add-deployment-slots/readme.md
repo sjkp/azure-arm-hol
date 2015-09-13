@@ -3,7 +3,12 @@ One of the cool features of Azure Web Apps is the support for deployment slots. 
 
 Note, slots are only supported on Basic plan and upwards.
 
-The task in this step, is simple we just want to add a test and a production slot to our web application, 
-so we are not going to add any extra resource, you will learn how you can configure the web app as a slot is just a configuration. 
+The task in this step, is to add a staging slot to our web application, for that to be possible we need to change the SKU of the app service plan to a Standard or higher.   
 
- 
+##How to 
+Unfortunately the documentation of the ARM templates are still lacking, for the slots specifically they are not even listed in the Schemas at https://github.com/Azure/azure-resource-manager-schemas/.
+A few resources that can help you solve this step: 
+
+- Use [Azure Resoruce Manager Explorer](../../concepts/azure-resource-explorer.md) (thus you create a slot via the portal first and see what json gets generated with the tool)
+- Use google and try to find some examples, for this specific step, David Ebbo (Azure Program Manager) has a great example in his github https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/TodoApp.json
+-  

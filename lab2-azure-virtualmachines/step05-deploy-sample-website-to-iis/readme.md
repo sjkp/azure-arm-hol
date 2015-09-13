@@ -12,7 +12,7 @@ The DSC file we are going to use is [azurewebsite.ps1](before/azuredkwebsite.ps1
 When using web deploy, it is important that the site name in the deploy package matches the web site on the server. In the sample web application it is deployed to "Default Web Site".
 
 ## Deployment
-[Deployment Guide](../docs/deployment.md)   
+[Deployment Guide](../../docs/deployment.md)   
 
 ## Extra Challenges
 If you need some extra challenges, try to see if you can do the following (note there is no answer on how to do this):

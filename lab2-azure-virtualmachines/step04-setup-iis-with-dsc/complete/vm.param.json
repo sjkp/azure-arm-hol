@@ -21,7 +21,7 @@
       "value": "DSCSetupIIS"
     },
     "vmDSCExtensionModulesUrl": {
-      "value": "https://github.com/sjkp/azure-arm-hol/raw/master/step04-setup-iis-with-dsc/complete/azuredkwebsite.ps1.zip"
+      "value": "https://github.com/sjkp/azure-arm-hol/raw/master/lab2-azure-virtualmachines/step04-setup-iis-with-dsc/complete/azuredkwebsite.ps1.zip"
     },
     "vmDSCExtensionConfigurationFunction": {
       "value": "azuredkwebsite.ps1\\azuredkwebsite"

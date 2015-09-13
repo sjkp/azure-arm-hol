@@ -53,5 +53,5 @@ The schemas makes heavy use of references, so when you encounter, e.g.
 Just find where the subnetProperties is defined to figure out what properties are available.  
 
 ## Deployment
-[Deployment Guide](../docs/deployment.md)   
+[Deployment Guide](../../docs/deployment.md)   
 

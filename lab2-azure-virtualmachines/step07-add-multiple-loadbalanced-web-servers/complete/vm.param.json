@@ -21,13 +21,13 @@
       "value": "DSCSetupIIS"
     },
     "vmDSCExtensionModulesUrl": {
-      "value": "https://github.com/sjkp/azure-arm-hol/raw/master/step05-deploy-sample-website-to-iis/complete/azuredkwebsite.ps1.zip"
+      "value": "https://github.com/sjkp/azure-arm-hol/raw/master/lab2-azure-virtualmachines/step05-deploy-sample-website-to-iis/complete/azuredkwebsite.ps1.zip"
     },
     "vmDSCExtensionConfigurationFunction": {
       "value": "azuredkwebsite.ps1\\azuredkwebsite"
     },
     "vmDSCDeployPackageUrl": {
-      "value": "https://github.com/sjkp/azure-arm-hol/raw/master/step05-deploy-sample-website-to-iis/complete/WebDeployPackage/azuredkwebsite.zip"
+      "value": "https://github.com/sjkp/azure-arm-hol/raw/master/lab2-azure-virtualmachines/step05-deploy-sample-website-to-iis/complete/WebDeployPackage/azuredkwebsite.zip"
     }
   }
 }
