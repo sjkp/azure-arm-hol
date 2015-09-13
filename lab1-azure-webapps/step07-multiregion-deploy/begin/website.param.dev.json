@@ -1,0 +1,33 @@
+﻿{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "siteName": {
+            "value": ""
+        },
+        "hostingPlanName": {
+            "value": ""
+        },
+        "siteLocation": {
+            "value": ""
+        },
+        "newStorageAccountName": {
+            "value": ""
+        },
+        "sqlServerName": {
+            "value": ""
+        },
+        "sqlServerAdmin": {
+            "value": ""
+        },
+        "sqlServerAdminPassword": {
+            "value": ""
+        },
+        "repoUrl": {
+            "value": ""
+        },
+        "projectSource": {
+            "value": ""
+        }
+    }
+}

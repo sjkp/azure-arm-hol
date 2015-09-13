@@ -136,11 +136,17 @@ The following example shows how to return the keys from a storage account in the
       } 
     } 
 
+## length
+
+**length(array)**
+
+Returns the number of elements in an array. Typically, used to specify the number of iterations when creating resources. For an example of using this function, see [Create multiple instances of resources in Azure Resource Manager](https://github.com/Azure/azure-content/blob/master/articles/resource-group-create-multiple.md).
+
 ## copyIndex
 
 **copyIndex(offset)**
 
-Returns the current index of an iteration loop. For examples of using this function, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md).
+Returns the current index of an iteration loop. For examples of using this function, see [Create multiple instances of resources in Azure Resource Manager](https://github.com/Azure/azure-content/blob/master/articles/resource-group-create-multiple.md).
 
 
 ## base64

@@ -1,0 +1,36 @@
+﻿{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "siteName": {
+            "value": "azuredktest"
+        },
+        "hostingPlanName": {
+            "value": "azuredk-hostingplan"
+        },
+        "siteLocation": {
+            "value": "West Europe"
+        },
+        "newStorageAccountName": {
+            "value": "azuredkwebsitestorage"
+        },
+        "sqlServerName": {
+            "value": "azuredksql"
+        },
+        "sqlServerAdmin": {
+            "value": "azuredk"
+        },
+        "sqlServerAdminPassword": {
+            "value": "HighlyS3cure"
+        },
+        "repoUrl": {
+            "value": "https://github.com/sjkp/azure-arm-hol.git"
+        },
+        "projectSource": {
+            "value": "lab2-azure-virtualmachines\\step05-deploy-sample-website-to-iis\\complete\\azuredkwebsite"
+        },
+        "deployRegions": {
+            "value": ["East US", "West Europe", "East Asia"]
+        }        
+    }
+}
