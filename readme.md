@@ -25,13 +25,10 @@ The following resource can help you get started
 - [Azure Resource Manager Concepts](concepts/readme.md)
 - [Azure Resource Manager Template Functions](docs/arm-template-functions.md)
 
-##Virtual Machines Lab
-The Virtual Machine lab contains serveral task that will teach you how to provision Azure VMs by using Azure Resource Manager (ARM) Templates.
-- [Step 01 - Create a Virtual Machine Part 1](lab2-azure-virtualmachines/step01-create-a-virtual-machine-part1/readme.md)
-- [Step 02 - Create a Virtual Machine Part 2](lab2-azure-virtualmachines/step02-create-a-virtual-machine-part2/readme.md)
-- [<s>Step 03 - Add Extension to Virtual Machine</s> (skip this one)](lab2-azure-virtualmachines/step03-add-extension-to-virtual-machine/readme.md)
-- [Step 04 - Setup IIS with DSC](lab2-azure-virtualmachines/step04-setup-iis-with-dsc/readme.md)
-- [Step 05 - Deploy Sample Website to IIS](lab2-azure-virtualmachines/step05-deploy-sample-website-to-iis/readme.md)
-- [Step 06 - Add Loadbalancer](lab2-azure-virtualmachines/step06-add-loadbalancer/readme.md)
-- [Step 07 - Add Multiple Loadbalanced Web Servers](lab2-azure-virtualmachines/step07-add-multiple-loadbalanced-web-servers/readme.md)
+##Two labs
+This hands on sessions consists of two labs
+- [Azure Web Apps](lab1-azure-webapps/readme.md)
+- [Azure Virtual Machines](lab2-azure-virtualmachines/readme.md)
+
+The labs are independent, so it is up to you if you want to do both or just the one you find most interesting. 
 

@@ -8,7 +8,7 @@ In order to deploy the site to multiple regions, we first need to define which r
 
 We can do that by creating a parameter that is an array of string with the region names. Use the following to get the resource locations 
 ```PowerShell
-Get-AzureLocation
+Get-AzureLocation | ogv
 ```
 
 When we have that in place we can use the copy property on a resource
