@@ -23,4 +23,7 @@ in our template without having to do copy paste.
 
 To get the length of the array you can use [length](../../docs/arm-template-functions.md#length) function
 
-You might also need to use the [replace](../../docs/arm-template-functions.md#replace) function to get rid of spaces in the region names. 
+You might also need to use the [replace](../../docs/arm-template-functions.md#replace) function to get rid of spaces in the region names.
+
+##Deployment
+[Deployment Guide](../../docs/deployment.md)    

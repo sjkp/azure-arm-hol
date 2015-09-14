@@ -26,3 +26,6 @@ Branch is the branch you want to deploy from.
 Another thing that is nice to know is that if you solution file is not located in the root, of you repo, you can point to it by setting an app setting with the key "PROJECT". 
 
 For this step, you can use the web project that we also use in the Virtual Machine lab, it's located in "lab2-azure-virtualmachines\step05-deploy-sample-website-to-iis\complete\azuredkwebsite"
+
+##Deployment
+[Deployment Guide](../../docs/deployment.md)   

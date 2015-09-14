@@ -2,8 +2,9 @@
 These hands-on labs are designed to help you get familiar with Azure Resource Manager.
 
 #Prerequisites
-Before you can complete the labs you need a few things
+Before you can complete the labs you need a few things (note you can use either PowerShell or Xplat-CLI)
 - [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
+- [Microsoft Azure Xplat-CLI](https://github.com/Azure/azure-xplat-cli/releases)
 - [An Azure Subscription](https://azure.microsoft.com/) (a trial account is fine)
 - [Visual Studio Code](https://code.visualstudio.com/) (or another text editor capable of highligting JSON, for you own sake don't use notepad)
 
@@ -22,6 +23,7 @@ Please note that if you try to run the complete solution with the provided *.par
 The following resource can help you get started
 - [Presentation](https://github.com/sjkp/azure-arm-hol/raw/master/presentation/Azure%20Resource%20Manager.pptx)
 - [Getting Started With Azure PowerShell](docs/getting-started-with-azure-powershell.md)
+- [Getting Started With Azure Xplat-CLI](https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager)
 - [Azure Resource Manager Concepts](concepts/readme.md)
 - [Azure Resource Manager Template Functions](docs/arm-template-functions.md)
 

@@ -13,12 +13,13 @@ We need to add following resources
 
 We are going to use the new V12.0 databases, which requires us to set the correct properties of the SQL server. 
 
-In order to add the connection string we need to use the connection string resource type (which works much like the app setting resource type used earlier.
+In order to add the connection string we need to use the connectionstring resource type (which works much like the appsetting resource type used earlier.
 https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2015-08-01/Microsoft.Web.json#L167-L206
 
 Another thing we have to remember is to configure the firewall for the SQL server (https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2014-04-01-preview/Microsoft.Sql.json#L330-L352). 
 In order for the SQL server to be accessible from other Azure services we need to open 0.0.0.0.
  
- 
+##Deployment
+[Deployment Guide](../../docs/deployment.md)    
 
 
