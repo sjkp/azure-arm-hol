@@ -1,4 +1,4 @@
-﻿# Step 1 Create web app and service plan
+﻿# Step 1 - Create web app and service plan
 
 In this step we are going to create the most basic azure website arm template
 - The App service plan

@@ -1,5 +1,5 @@
 #Azure Web App Lab
-The Azure Web App lab will teach you how to deploy Azure Web Apps and associated resourcs with Azure Resource Manager (ARM) templates. 
+The Azure Web App lab will teach you how to deploy Azure Web Apps and associated resources with Azure Resource Manager (ARM) templates. 
 The lab consists of the following steps. 
 - [Step 01 - Create Web App and Hosting Plan](step01-create-webapp-and-hosting-plan/readme.md)
 - [Step 02 - Add Deployment Slots](step02-add-deployment-slots/readme.md)

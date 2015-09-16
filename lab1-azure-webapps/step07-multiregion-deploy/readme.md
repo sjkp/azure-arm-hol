@@ -11,6 +11,10 @@ We can do that by creating a parameter that is an array of string with the regio
 Get-AzureLocation | ogv
 ```
 
+```
+azure location list
+```
+
 When we have that in place we can use the copy property on a resource
 ```json
 "copy": {
